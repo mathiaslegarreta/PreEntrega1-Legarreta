@@ -6,13 +6,13 @@ function choice(election) {
     let result = ""
 
     if (election == 1) {
-        result = "Piedra"
+        result = "PIEDRA"
     } else if (election == 2) {
-        result = "Papel"
+        result = "PAPEL"
     } else if (election == 3) {
-        result = "Tijera"
+        result = "TIJERA"
     } else {
-        result = "TU ELECCION NO ES CORRECTA!!"
+        result = "UNA OPCION INCORRECTA!!"
     }
 
     return result
@@ -22,7 +22,7 @@ function choice(election) {
 let user
 let pc = 2; //Hago que elija papel hasta que pueda generar un numero aleatorio.
 
-user = prompt("Elige: 1-Piedra, 2- Papel o 3- Tijera ")
+user = prompt("Elige: 1) Piedra, 2) 2Papel o 3) Tijera ")
 
 alert("El Usuario elige " + choice(user))
 alert("PC elige " + choice(pc))
@@ -42,6 +42,6 @@ else if (user == 3 && pc == 2) {
     alert("GANA EL USUARIO")
 }
 else {
-    alert("GANA LA MAQUINA")
+    alert("GANA LA PC")
 }
 
