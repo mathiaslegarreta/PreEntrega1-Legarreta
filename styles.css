@@ -12,11 +12,11 @@
  }
 
  body {
-     height: 100vh;
+     height: 900px;
      display: flex;
      align-items: center;
      justify-content: center;
-     background-color: #f6f7fb;
+     background-color: #94a5e8;
  }
 
  .container {
@@ -44,12 +44,6 @@
 
  }
 
- .result {
-     text-align: center;
-     font-size: 30px;
-     font-weight: 600;
- }
-
  .option-image img {
      width: 50px;
  }
@@ -69,6 +63,7 @@
      opacity: 0.5;
      cursor: pointer;
      transition: 0.3s ease;
+   
  }
 
 
@@ -76,12 +71,9 @@
      opacity: 1;
  }
 
- .option-image img {
-     pointer-events: none;
- }
-
  .option-image p {
      font-size: 20px;
      margin-top: 10px;
+    
 
  }
