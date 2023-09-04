@@ -27,13 +27,14 @@ let loses = 0;
 // Gana el que llega primero a 3 victorias
 while (wins < 3 && loses < 3) {
 
+    /*El usuario elige el numero. Cuando pc elija aleatorio, debo ponerla dentro del while,
+    asi cada vez que se ejecute el ciclo, elige diferente*/
     user = prompt("Elige: 1) Piedra, 2) o 3) Tijera ")
 
     alert("El Usuario elige " + election(user))
     alert("PC elige " + election(pc))
 
     //Comparaciones para ver quien gana
-
     if (user == pc) {
         alert("EMPATE")
     } else if (user == 1 && pc == 3) {
@@ -51,13 +52,10 @@ while (wins < 3 && loses < 3) {
         alert("GANA LA PC")
         loses++;
     }
-
-
-
 }
 
-//Mostrar cuantas veces gane y perdi.
-alert("Ganaste " + wins + "veces. Perdiste " + loses + " veces")
+//Mostrar cuantas veces ganó y perdó el usuario.
+alert("Ganaste " + wins + " veces. Perdiste " + loses + " veces")
 
 
 
