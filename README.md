@@ -9,12 +9,11 @@ Pasos a seguir:
 	* Si usuario elige papel y la maquina piedra entonces GANA USUARIO
 	* Si no pasa ninguna de las anteriores, entonces GANA MAQUINA
 
-4. Integrar en html para que el usuario elija mediante click en las imagenes.
-5. Mostrar las imagenes correspondientes a las elecciones de PC vs Usuario (Dejar de usar alertas!)
-6. Volver a Empezar el Juego
+4. Hacer que gane el primero que llegue a 3 victorias y mostrar cuantas veces gane y cuantas perdi.
+5. Integrar en html para que el usuario elija mediante click en las imagenes.
+6. Mostrar las imagenes correspondientes a las elecciones de PC vs Usuario (Dejar de usar alertas!)
+7. Boton para reiniciar el Juego
 
 
-Opciones a futuro (Dependiendo la dificultad):
-* Contar con 3 vidas
-* Mostrar cantidad de veces que gana el usuario vs cantidad de veces que gana la maquina.
+
 
