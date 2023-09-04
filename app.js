@@ -29,7 +29,7 @@ while (wins < 3 && loses < 3) {
 
     /*El usuario elige el numero. Cuando pc elija aleatorio, debo ponerla dentro del while,
     asi cada vez que se ejecute el ciclo, elige diferente*/
-    user = prompt("Elige: 1) Piedra, 2) o 3) Tijera ")
+    user = prompt("Elige: 1) Piedra, 2) Papel o 3) Tijera ")
 
     alert("El Usuario elige " + election(user))
     alert("PC elige " + election(pc))
