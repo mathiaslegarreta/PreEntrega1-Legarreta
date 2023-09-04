@@ -2,14 +2,14 @@
 // 1 es piedra, 2 es papel, 3 es tijera.
 
 //Funcion para reflejar eleccion
-function choice(election) {
+function election(choice) {
     let result = ""
 
-    if (election == 1) {
+    if (choice == 1) {
         result = "PIEDRA"
-    } else if (election == 2) {
+    } else if (choice == 2) {
         result = "PAPEL"
-    } else if (election == 3) {
+    } else if (choice == 3) {
         result = "TIJERA"
     } else {
         result = "UNA OPCION INCORRECTA!!"
@@ -24,8 +24,8 @@ let pc = 2; //Hago que elija papel hasta que pueda generar un numero aleatorio.
 
 user = prompt("Elige: 1) Piedra, 2) 2Papel o 3) Tijera ")
 
-alert("El Usuario elige " + choice(user))
-alert("PC elige " + choice(pc))
+alert("El Usuario elige " + election(user))
+alert("PC elige " + election(pc))
 
 
 
