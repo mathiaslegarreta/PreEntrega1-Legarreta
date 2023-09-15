@@ -1,4 +1,5 @@
-// Declaracion de variables 
+// Declaracion de variables usuario, maquina, victorias y perdidas, juego terminado, resultado.
+let userChoice
 let cpuChoice
 let wins = 0;
 let losses = 0;
@@ -79,10 +80,13 @@ function restartGame() {
     losses = 0;
     result.textContent = "A Jugar!"
     gameEnded = false;
+
+    //Poner imagenes de piedra como al principio
+    //Le asigno piedra a las variables para que vuelvan, porque no se me ocurre de que otra forma hacerlo
+    userChoice = 1;
+    cpuChoice = 1;
     document.getElementById("user-choice").src = `images/${election(userChoice).toLowerCase()}.png`;
     document.getElementById("cpu-choice").src = `images/${election(cpuChoice).toLowerCase()}.png`;
-
-
 }
 
 
