@@ -20,16 +20,16 @@ function election(choice) {
 }
 // Declaracion de variables usuario, maquina, victorias y perdidas.
 let user
-let pc = 2; //Hago que elija papel hasta que pueda generar un numero aleatorio.
+let pc 
 let wins = 0;
 let loses = 0;
-
 // Gana el que llega primero a 3 victorias
 while (wins < 3 && loses < 3) {
-
-    /*El usuario elige el numero. Cuando pc elija aleatorio, debo ponerla dentro del while,
+    
+    /*El usuario elige el numero. Cuando pc elija a1leatorio, debo ponerla dentro del while,
     asi cada vez que se ejecute el ciclo, elige diferente*/
     user = prompt("Elige: 1) Piedra, 2) Papel o 3) Tijera ")
+    pc = Math.floor(Math.random() * (3 - 1 + 1) + 1); 
 
     alert("El Usuario elige " + election(user))
     alert("PC elige " + election(pc))
