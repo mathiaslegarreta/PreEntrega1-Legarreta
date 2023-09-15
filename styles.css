@@ -2,7 +2,15 @@
  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 
  body {
-     font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #94a5e8;
  }
 
  * {
@@ -11,19 +19,13 @@
      box-sizing: border-box;
  }
 
- body {
-     height: 900px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     background-color: #94a5e8;
- }
-
  .container {
+
      padding: 35px 120px;
      border-radius: 15px;
      background-color: #FFF;
      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+     text-align: center;
  }
 
  .result-images {
@@ -43,10 +45,11 @@
      transform: rotate(-90deg) rotateY(180deg);
 
  }
- .result{
-    text-align: center;
-    font-size: 30px;
-    margin-top: 20px;
+
+ .result {
+     text-align: center;
+     font-size: 30px;
+     margin-top: 20px;
 
  }
 
@@ -69,7 +72,7 @@
      opacity: 0.5;
      cursor: pointer;
      transition: 0.3s ease;
-   
+
  }
 
 
@@ -80,7 +83,16 @@
  .option-image p {
      font-size: 20px;
      margin-top: 10px;
-    
+
 
  }
- 
+
+ .restart {
+     text-align: center;
+     /* Alinear el contenido del div restart al centro */
+     margin-top: 20px;
+     /* Espacio entre la sección y el div restart */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
