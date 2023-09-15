@@ -1,5 +1,4 @@
-// Declaracion de variables usuario, maquina, victorias y perdidas.
-let userChoice
+// Declaracion de variables 
 let cpuChoice
 let wins = 0;
 let losses = 0;
@@ -37,7 +36,7 @@ function makeChoice(choice) {
 
     userChoice = choice;
     cpuChoice = aleatorio(1, 3)
-    
+
 
     document.getElementById("user-choice").src = `images/${election(userChoice).toLowerCase()}.png`;
     document.getElementById("cpu-choice").src = `images/${election(cpuChoice).toLowerCase()}.png`;
@@ -71,11 +70,11 @@ function makeChoice(choice) {
 
         // Desactivar el juego una vez alguien llegue a 3 
         gameEnded = true;
-        
+
     }
 }
 //Funcion para reiniciar el juego
-function restartGame(){
+function restartGame() {
     wins = 0;
     losses = 0;
     result.textContent = "A Jugar!"
@@ -83,7 +82,7 @@ function restartGame(){
     document.getElementById("user-choice").src = `images/${election(userChoice).toLowerCase()}.png`;
     document.getElementById("cpu-choice").src = `images/${election(cpuChoice).toLowerCase()}.png`;
 
-   
+
 }
 
 
