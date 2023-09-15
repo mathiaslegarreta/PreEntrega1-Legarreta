@@ -1,5 +1,8 @@
-
-// 1 es piedra, 2 es papel, 3 es tijera.
+// Declaracion de variables usuario, maquina, victorias y perdidas.
+let user
+let pc
+let wins = 0;
+let loses = 0;
 
 //Funcion para reflejar eleccion
 function election(choice) {
@@ -18,18 +21,20 @@ function election(choice) {
     return result
 
 }
-// Declaracion de variables usuario, maquina, victorias y perdidas.
-let user
-let pc 
-let wins = 0;
-let loses = 0;
+//Funcion de aleatoriedad
+function aleatorio(min, max){
+   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
+
 // Gana el que llega primero a 3 victorias
 while (wins < 3 && loses < 3) {
     
-    /*El usuario elige el numero. Cuando pc elija a1leatorio, debo ponerla dentro del while,
+    /*El usuario elige el numero. Cuando pc elija aleatorio, debo ponerla dentro del while,
     asi cada vez que se ejecute el ciclo, elige diferente*/
     user = prompt("Elige: 1) Piedra, 2) Papel o 3) Tijera ")
-    pc = Math.floor(Math.random() * (3 - 1 + 1) + 1); 
+    pc =  aleatorio(1,3)
 
     alert("El Usuario elige " + election(user))
     alert("PC elige " + election(pc))
