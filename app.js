@@ -79,9 +79,11 @@ function restartGame(){
     wins = 0;
     losses = 0;
     result.textContent = "A Jugar!"
+    gameEnded = false;
+    document.getElementById("user-choice").src = `images/${election(userChoice).toLowerCase()}.png`;
+    document.getElementById("cpu-choice").src = `images/${election(cpuChoice).toLowerCase()}.png`;
 
    
-    gameEnded = false;
 }
 
 
