@@ -3,6 +3,7 @@ let userChoice
 let cpuChoice
 let wins = 0;
 let loses = 0;
+let result = document.getElementById("result");
 
 //Funcion para reflejar eleccion
 function election(choice) {
@@ -24,7 +25,7 @@ function election(choice) {
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
+// Funcion para comparar opcion user vs pc
 function makeChoice(choice) {
     userChoice = choice;
     cpuChoice = aleatorio(1, 3)
@@ -32,24 +33,28 @@ function makeChoice(choice) {
     document.getElementById("user-choice").src = `images/${election(userChoice).toLowerCase()}.png`;
     document.getElementById("cpu-choice").src = `images/${election(cpuChoice).toLowerCase()}.png`;
     
+    
 
     if (userChoice == cpuChoice) {
-        alert("EMPATE");
-    } else if ((userChoice == 1 && cpuChoice == 3) || 
-               (userChoice == 2 && cpuChoice == 1) || 
-               (userChoice == 3 && cpuChoice == 2)) {
-        alert("GANA EL USUARIO");
+        result.textContent = "EMPATE";
+    } else if (
+        (userChoice == 1 && cpuChoice == 3) ||
+        (userChoice == 2 && cpuChoice == 1) ||
+        (userChoice == 3 && cpuChoice == 2)
+    ) {
+        result.textContent = "GANA EL USUARIO";
         wins++;
     } else {
-        alert("GANA LA PC");
+        result.textContent = "GANA LA PC";
         losses++;
     }
-    
-    updateScore();
 
+    updateScore();
 }
+
 function updateScore() {
-    alert("Ganaste " + wins + " veces. Perdiste " + losses + " veces");
+    
+    result.textContent += "Ganaste " + wins + " veces. Perdiste " + losses + " veces";
 }
 
 
