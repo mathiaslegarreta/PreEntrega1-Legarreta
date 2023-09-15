@@ -1,66 +1,89 @@
 // Declaracion de variables usuario, maquina, victorias y perdidas.
-let user
-let pc
+let userChoice
+let cpuChoice
 let wins = 0;
 let loses = 0;
 
 //Funcion para reflejar eleccion
 function election(choice) {
-    let result = ""
 
     if (choice == 1) {
-        result = "PIEDRA"
+        return "PIEDRA"
     } else if (choice == 2) {
-        result = "PAPEL"
+        return "PAPEL"
     } else if (choice == 3) {
-        result = "TIJERA"
+        return "TIJERA"
     } else {
-        result = "UNA OPCION INCORRECTA!!"
+        return "UNA OPCION INCORRECTA!!"
     }
 
-    return result
+
 
 }
 //Funcion de aleatoriedad
-function aleatorio(min, max){
-   return Math.floor(Math.random() * (max - min + 1) + min);
+function aleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function makeChoice(choice) {
+    userChoice = choice;
+    cpuChoice = aleatorio(1, 3)
 
-
-// Gana el que llega primero a 3 victorias
-while (wins < 3 && loses < 3) {
+    document.getElementById("user-choice").src = `images/${election(userChoice).toLowerCase()}.png`;
+    document.getElementById("cpu-choice").src = `images/${election(cpuChoice).toLowerCase()}.png`;
     
-    /*El usuario elige el numero. Cuando pc elija aleatorio, debo ponerla dentro del while,
-    asi cada vez que se ejecute el ciclo, elige diferente*/
-    user = prompt("Elige: 1) Piedra, 2) Papel o 3) Tijera ")
-    pc =  aleatorio(1,3)
 
-    alert("El Usuario elige " + election(user))
-    alert("PC elige " + election(pc))
+    if (userChoice == cpuChoice) {
+        alert("EMPATE");
+    } else if ((userChoice == 1 && cpuChoice == 3) || 
+               (userChoice == 2 && cpuChoice == 1) || 
+               (userChoice == 3 && cpuChoice == 2)) {
+        alert("GANA EL USUARIO");
+        wins++;
+    } else {
+        alert("GANA LA PC");
+        losses++;
+    }
+    
+    updateScore();
 
-    //Comparaciones para ver quien gana
-    if (user == pc) {
-        alert("EMPATE")
-    } else if (user == 1 && pc == 3) {
-        alert("GANA EL USUARIO");
-        wins++;
-    } else if (user == 2 && pc == 1) {
-        alert("GANA EL USUARIO");
-        wins++;
-    }
-    else if (user == 3 && pc == 2) {
-        alert("GANA EL USUARIO");
-        wins++;
-    }
-    else {
-        alert("GANA LA PC")
-        loses++;
-    }
+}
+function updateScore() {
+    alert("Ganaste " + wins + " veces. Perdiste " + losses + " veces");
 }
 
-//Mostrar cuantas veces ganó y perdó el usuario.
-alert("Ganaste " + wins + " veces. Perdiste " + loses + " veces")
+
+
+// // Gana el que llega primero a 3 victorias
+// while (wins < 3 && loses < 3) {
+
+
+
+//     alert("El Usuario elige " + election(user))
+//     alert("PC elige " + election(pc))
+
+//     //Comparaciones para ver quien gana
+//     if (user == pc) {
+//         alert("EMPATE")
+//     } else if (user == 1 && pc == 3) {
+//         alert("GANA EL USUARIO");
+//         wins++;
+//     } else if (user == 2 && pc == 1) {
+//         alert("GANA EL USUARIO");
+//         wins++;
+//     }
+//     else if (user == 3 && pc == 2) {
+//         alert("GANA EL USUARIO");
+//         wins++;
+//     }
+//     else {
+//         alert("GANA LA PC")
+//         loses++;
+//     }
+// }
+
+// //Mostrar cuantas veces ganó y perdó el usuario.
+// alert("Ganaste " + wins + " veces. Perdiste " + loses + " veces")
 
 
 

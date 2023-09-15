@@ -43,6 +43,12 @@
      transform: rotate(-90deg) rotateY(180deg);
 
  }
+ .result{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+
+ }
 
  .option-image img {
      width: 50px;

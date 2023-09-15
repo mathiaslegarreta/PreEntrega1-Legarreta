@@ -14,25 +14,25 @@
         <div class="result-field">
             <div class="result-images">
                 <span class="user-result">
-                    <img src="images/piedra.png" alt="">
+                    <img id="user-choice" src="images/piedra.png" alt="">
                 </span>
                 <span class="cpu-result">
-                    <img src="images/piedra.png" alt="">
+                    <img id="cpu-choice" src="images/piedra.png" alt="">
                 </span>
             </div>
-           
         </div>
+           <div id="result" class="result">A Jugar!</div>
         <div class="option-images">
             <span class="option-image">
-                <img src="images/piedra.png" alt="">
+                <img onclick="makeChoice(1)" src="images/piedra.png" alt="">
                 <p>Piedra</p>
             </span>
             <span class="option-image">
-                <img src="images/papel.png" alt="">
+                <img onclick="makeChoice(2)" src="images/papel.png" alt="">
                 <p>Papel</p>
             </span>
             <span class="option-image scissors">
-                <img src="images/tijera.png" alt="">
+                <img onclick="makeChoice(3)" src="images/tijera.png" alt="">
                 <p>Tijera</p>
             </span>
         </div>
