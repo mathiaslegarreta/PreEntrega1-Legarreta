@@ -6,6 +6,7 @@ let losses = 0;
 let gameEnded = false;
 let result = document.getElementById("result");
 
+
 //Funcion para reflejar eleccion
 function election(choice) {
 
@@ -60,6 +61,8 @@ function makeChoice(choice) {
 
     // Verificar si alguien ha ganado 3 veces
     if (wins === 3 || losses === 3) {
+        document.getElementById("user-choice").src = "";
+        document.getElementById("cpu-choice").src = "";
         if (wins === 3) {
             result.textContent = "¡El usuario ha ganado 3 veces! El juego ha terminado.";
         } else {
@@ -69,11 +72,20 @@ function makeChoice(choice) {
         // Desactivar el juego una vez alguien llegue a 3 
         gameEnded = true;
         
-
-
     }
-
 }
+//Funcion para reiniciar el juego
+function restartGame(){
+    wins = 0;
+    losses = 0;
+    result.textContent = "A Jugar!"
+
+   
+    gameEnded = false;
+}
+
+
+
 
 
 

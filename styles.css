@@ -86,13 +86,26 @@
 
 
  }
-
  .restart {
      text-align: center;
-     /* Alinear el contenido del div restart al centro */
      margin-top: 20px;
-     /* Espacio entre la sección y el div restart */
      display: flex;
      flex-direction: column;
      align-items: center;
- }
+    }
+ .restart button{
+    height: auto;
+    width: auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+}   
+.restart button:hover{
+    background-color: #94a5e8;
+    color: white;
+    border:1px solid white;
+}    
+    
+        
