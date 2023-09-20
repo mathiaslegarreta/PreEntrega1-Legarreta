@@ -1,103 +1,47 @@
-// Declaracion de variables usuario, maquina, victorias y perdidas, juego terminado, resultado.
-let userChoice
-let cpuChoice
-let wins = 0;
-let losses = 0;
-let gameEnded = false;
-let result = document.getElementById("result");
+let user;
+let pc;
+const results = [];
+const choices = {
+    1: "Piedra",
+    2: "Papel",
+    3: "Tijera"
+};
 
-
-//Funcion para reflejar eleccion
-function election(choice) {
-
-    if (choice == 1) {
-        return "PIEDRA"
-    } else if (choice == 2) {
-        return "PAPEL"
-    } else if (choice == 3) {
-        return "TIJERA"
-    } else {
-        return "UNA OPCION INCORRECTA!!"
-    }
-
-
-
-}
-//Funcion de aleatoriedad
-function aleatorio(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
+function choice(election) {
+    return choices[election] || "TU ELECCIÓN NO ES CORRECTA!!";
 }
 
-// Funcion para comparar opcion usuario vs pc 
-function makeChoice(choice) {
-    // Si el juego terminó, no hacer nada
-    if (gameEnded) {
-        return;
+do {
+    user = parseInt(prompt("Elige: 1-Piedra, 2-Papel o 3-Tijera"));
+
+    
+    if (user !== 1 && user !== 2 && user !== 3) {
+        alert("ELECCIÓN INCORRECTA. Por favor, elige 1, 2 o 3.");
+        continue;
     }
 
-    userChoice = choice;
-    cpuChoice = aleatorio(1, 3)
+    pc = Math.floor(Math.random() * 3) + 1;
 
+    alert("El Usuario elige " + choice(user));
+    alert("PC elige " + choice(pc));
 
-    document.getElementById("user-choice").src = `images/${election(userChoice).toLowerCase()}.png`;
-    document.getElementById("cpu-choice").src = `images/${election(cpuChoice).toLowerCase()}.png`;
-
-
-
-    if (userChoice == cpuChoice) {
-        result.textContent = "EMPATE";
+    
+    if (user == pc) {
+        alert("EMPATE");
+        results.push("EMPATE");
     } else if (
-        (userChoice == 1 && cpuChoice == 3) ||
-        (userChoice == 2 && cpuChoice == 1) ||
-        (userChoice == 3 && cpuChoice == 2)
+        (user == 1 && pc == 3) ||
+        (user == 2 && pc == 1) ||
+        (user == 3 && pc == 2)
     ) {
-        result.textContent = "GANA EL USUARIO";
-        wins++;
+        alert("GANA EL USUARIO");
+        results.push("GANA EL USUARIO");
     } else {
-        result.textContent = "GANA LA PC";
-        losses++;
+        alert("GANA LA MÁQUINA");
+        results.push("GANA LA MÁQUINA");
     }
 
-
-    // Verificar si alguien ha ganado 3 veces
-    if (wins === 3 || losses === 3) {
-        document.getElementById("user-choice").src = "";
-        document.getElementById("cpu-choice").src = "";
-        if (wins === 3) {
-            result.textContent = "¡El usuario ha ganado 3 veces! El juego ha terminado.";
-        } else {
-            result.textContent = "¡La PC ha ganado 3 veces! El juego ha terminado.";
-        }
-
-        // Desactivar el juego una vez alguien llegue a 3 
-        gameEnded = true;
-
-    }
-}
-//Funcion para reiniciar el juego
-function restartGame() {
-    wins = 0;
-    losses = 0;
-    result.textContent = "A Jugar!"
-    gameEnded = false;
-
-    //Poner imagenes de piedra como al principio
-    //Le asigno piedra a las variables para que vuelvan, porque no se me ocurre de que otra forma hacerlo
-    userChoice = 1;
-    cpuChoice = 1;
-    document.getElementById("user-choice").src = `images/${election(userChoice).toLowerCase()}.png`;
-    document.getElementById("cpu-choice").src = `images/${election(cpuChoice).toLowerCase()}.png`;
-}
+} while (results.length < 3);
 
 
-
-
-
-
-
-
-
-
-
-
-
+alert("Resultados de las rondas:\n" + results.join("\n"));
