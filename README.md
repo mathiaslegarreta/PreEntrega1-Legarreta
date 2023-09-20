@@ -9,10 +9,13 @@ Pasos a seguir:
 	* Si usuario elige papel y la maquina piedra entonces GANA USUARIO
 	* Si no pasa ninguna de las anteriores, entonces GANA MAQUINA
 
-4. Hacer que gane el primero que llegue a 3 victorias y mostrar cuantas veces gane y cuantas perdi.
+4. Jugar 3 rondas y luego mostrar cuales fueron los resultados en cada ronda.
+
+Despues:
 5. Integrar en html para que el usuario elija mediante click en las imagenes.
-6. Mostrar las imagenes correspondientes a las elecciones de PC vs Usuario (Dejar de usar alertas!)
-7. Boton para reiniciar el Juego
+6. Mostrar las imagenes correspondientes a las elecciones de PC vs Usuario 
+7. Mostrar los resultados de las cada ronda y luego al final quien ganó.
+8. Boton para reiniciar el Juego
 
 
 
