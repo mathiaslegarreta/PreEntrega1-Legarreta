@@ -14,7 +14,7 @@ function choice(election) {
 do {
     user = parseInt(prompt("Elige: 1-Piedra, 2-Papel o 3-Tijera"));
 
-    
+
     if (user !== 1 && user !== 2 && user !== 3) {
         alert("ELECCIÓN INCORRECTA. Por favor, elige 1, 2 o 3.");
         continue;
@@ -25,7 +25,7 @@ do {
     alert("El Usuario elige " + choice(user));
     alert("PC elige " + choice(pc));
 
-    
+
     if (user == pc) {
         alert("EMPATE");
         results.push("EMPATE");
