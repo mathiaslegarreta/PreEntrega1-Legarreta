@@ -26,21 +26,28 @@ do {
     alert("El Usuario elige " + choice(user));
     alert("PC elige " + choice(pc));
 
+    let roundResult;
+
     if (user == pc) {
         alert("EMPATE");
-        results.push("EMPATE");
+        roundResult = "EMPATE";
     } else if (
         (user == 1 && pc == 3) ||
         (user == 2 && pc == 1) ||
         (user == 3 && pc == 2)
     ) {
         alert("GANA EL USUARIO");
-        results.push("GANA EL USUARIO");
+        roundResult = "GANA EL USUARIO";
     } else {
         alert("GANA LA MÁQUINA");
-        results.push("GANA LA MÁQUINA");
+        roundResult = "GANA LA MÁQUINA";
     }
 
+    results.push(roundResult);
+
 } while (results.length < 3);
-alert("Resultados de las rondas:\n" + results.join("\n"));
+
+results.forEach((result, index) => {
+    alert(`Resultado de la ronda ${index + 1}: ${result}`);
+});
 
