@@ -42,5 +42,5 @@ do {
     }
 
 } while (results.length < 3);
-
 alert("Resultados de las rondas:\n" + results.join("\n"));
+
