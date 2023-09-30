@@ -1,5 +1,6 @@
 let user;
 let pc;
+let roundResult;
 const min = 1;
 const max = 3;
 const results = [];
@@ -26,7 +27,6 @@ do {
     alert("El Usuario elige " + choice(user));
     alert("PC elige " + choice(pc));
 
-    let roundResult;
 
     if (user == pc) {
         alert("EMPATE");
