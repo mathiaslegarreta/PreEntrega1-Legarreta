@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piedra, Papel o Tijera</title>
     <link rel="stylesheet" href="styles.css">
-
 </head>
-
 <body>
     <section class="container">
         <div class="result-field">
@@ -23,33 +20,25 @@
         </div>
         <div id="result" class="result">A Jugar!</div>
         <div class="option-images">
-            <span class="option-image">
-                <img src="images/piedra.png" id="rock" alt="">
+            <span class="option-image" data-choice="1">
+                <img src="images/piedra.png" alt="">
                 <p>Piedra</p>
             </span>
-            <span class="option-image">
-                <img src="images/papel.png" id="paper" alt="">
+            <span class="option-image" data-choice="2">
+                <img src="images/papel.png" alt="">
                 <p>Papel</p>
             </span>
-            <span class="option-image">
-                <img src="images/tijera.png" id="scissors" alt="">
+            <span class="option-image" data-choice="3">
+                <img src="images/tijera.png" alt="">
                 <p>Tijera</p>
             </span>
         </div>
-
     </section>
 
     <div class="restart">
         <button id="restart">Reiniciar</button>
     </div>
 
-
-
-
-
-
-
     <script src="app.js"></script>
 </body>
-
 </html>
