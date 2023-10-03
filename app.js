@@ -1,14 +1,24 @@
-let user;
-let pc;
-let roundResult;
+const resultsJSON = [];
 const min = 1;
 const max = 3;
-const results = [];
+
 const choices = {
     1: "Piedra",
     2: "Papel",
     3: "Tijera"
 };
+
+function updateDOM(userChoice, pcChoice, roundResult) {
+    const userChoiceImage = document.getElementById("user-choice");
+    const pcChoiceImage = document.getElementById("cpu-choice");
+    const resultText = document.getElementById("result");
+
+    userChoiceImage.src = `images/${choice(userChoice).toLowerCase()}.png`;
+    pcChoiceImage.src = `images/${choice(pcChoice).toLowerCase()}.png`;
+
+    resultText.textContent = `Resultado de la ronda ${resultsJSON.length}: ${roundResult}`;
+}
+
 
 function choice(election) {
     return choices[election] || "TU ELECCIÓN NO ES CORRECTA!!";
