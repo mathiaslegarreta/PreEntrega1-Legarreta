@@ -9,7 +9,8 @@ const choices = {
     3: "Tijera"
 };
 
-// Función para realizar una ronda del juego y actualizar la página
+const results = []; 
+
 function playRound(userChoice) {
     user = parseInt(userChoice);
     pc = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -37,9 +38,10 @@ function playRound(userChoice) {
     }
 
     resultElement.textContent = roundResult;
+
+    results.push(roundResult);
 }
 
-// Agregar escuchadores de eventos para las opciones de usuario
 const optionImages = document.querySelectorAll('.option-image');
 optionImages.forEach(optionImage => {
     optionImage.addEventListener('click', function() {
@@ -48,28 +50,22 @@ optionImages.forEach(optionImage => {
     });
 });
 
-// Función para obtener el nombre de la elección
 function choice(election) {
     return choices[election] || "TU ELECCIÓN NO ES CORRECTA!!";
 }
 
-// Función para reiniciar el juego
 function restartGame() {
-    // Restablecer las imágenes del usuario y la PC
     const userChoiceImage = document.getElementById('user-choice');
     const cpuChoiceImage = document.getElementById('cpu-choice');
 
     userChoiceImage.src = 'images/piedra.png';
     cpuChoiceImage.src = 'images/piedra.png';
 
-    // Restablecer el resultado a "A Jugar!"
     const resultElement = document.getElementById('result');
     resultElement.textContent = 'A Jugar!';
 
-    // Limpiar el arreglo de resultados
     results.length = 0;
 }
 
-// Agregar un escuchador de eventos para el botón de reinicio
 const restartButton = document.getElementById('restart');
 restartButton.addEventListener('click', restartGame);
