@@ -52,3 +52,24 @@ optionImages.forEach(optionImage => {
 function choice(election) {
     return choices[election] || "TU ELECCIÓN NO ES CORRECTA!!";
 }
+
+// Función para reiniciar el juego
+function restartGame() {
+    // Restablecer las imágenes del usuario y la PC
+    const userChoiceImage = document.getElementById('user-choice');
+    const cpuChoiceImage = document.getElementById('cpu-choice');
+
+    userChoiceImage.src = 'images/piedra.png';
+    cpuChoiceImage.src = 'images/piedra.png';
+
+    // Restablecer el resultado a "A Jugar!"
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = 'A Jugar!';
+
+    // Limpiar el arreglo de resultados
+    results.length = 0;
+}
+
+// Agregar un escuchador de eventos para el botón de reinicio
+const restartButton = document.getElementById('restart');
+restartButton.addEventListener('click', restartGame);
