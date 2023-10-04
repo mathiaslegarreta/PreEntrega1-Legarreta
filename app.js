@@ -9,10 +9,10 @@ const choices = {
     3: "Tijera"
 };
 const results = {
-    historial: [], // Array para almacenar el historial de resultados
+    historial: [],
     roundsPlayed: 0,
-    roundsToPlay: 5, // Cambiado a 5 rondas
-    gameWinner: null // Ganador del juego
+    roundsToPlay: 5,
+    gameWinner: null
 };
 
 function playRound(userChoice) {
@@ -47,11 +47,11 @@ function playRound(userChoice) {
     }
 
     resultElement.textContent = roundResult;
-    results.historial.push(roundResult); // Agrega el resultado al historial
+    results.historial.push(roundResult);
     results.roundsPlayed++;
 
     if (results.roundsPlayed === results.roundsToPlay) {
-        determineWinner(); // Verificar ganador después de todas las rondas
+        determineWinner();
     }
 }
 
@@ -61,7 +61,7 @@ function choice(election) {
 
 function determineWinner() {
     if (results.gameWinner) {
-        return; // Si ya se determinó un ganador, no hacer nada
+        return;
     }
 
     const resultElement = document.getElementById('result');
@@ -87,7 +87,6 @@ function determineWinner() {
 function storeWinner(winner) {
     localStorage.setItem("gameWinner", winner);
 
-    // Mostrar el ganador en el historial solo una vez si es un empate general o hay un ganador
     if (winner === "Empate" && results.roundsPlayed === results.roundsToPlay) {
         const historialDiv = document.getElementById("historial");
         const resultado = document.createElement("p");
@@ -111,12 +110,11 @@ function restartGame() {
     const resultElement = document.getElementById('result');
     resultElement.textContent = 'A Jugar!';
 
-    results.historial.length = 0; // Limpia el historial
-
+    results.historial.length = 0;
     localStorage.removeItem("gameWinner");
-    results.gameWinner = null; // Reinicia el ganador
+    results.gameWinner = null;
 
-    results.roundsPlayed = 0; // Reinicia el contador de rondas
+    results.roundsPlayed = 0;
 }
 
 const restartButton = document.getElementById('restart');
