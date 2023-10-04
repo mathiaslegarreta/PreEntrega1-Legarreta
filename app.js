@@ -11,7 +11,7 @@ const choices = {
 const results = {
     historial: [], // Array para almacenar el historial de resultados
     roundsPlayed: 0,
-    roundsToPlay: 5,
+    roundsToPlay: 5, // Cambiado a 5 rondas
     gameWinner: null // Ganador del juego
 };
 
@@ -49,6 +49,10 @@ function playRound(userChoice) {
     resultElement.textContent = roundResult;
     results.historial.push(roundResult); // Agrega el resultado al historial
     results.roundsPlayed++;
+
+    if (results.roundsPlayed === results.roundsToPlay) {
+        determineWinner(); // Verificar ganador después de todas las rondas
+    }
 }
 
 function choice(election) {
@@ -73,7 +77,7 @@ function determineWinner() {
         results.gameWinner = "Máquina";
         resultElement.textContent = "LA PC HA GANADO EL JUEGO";
         storeWinner("Máquina");
-    } else {
+    } else if (userWins === results.roundsToPlay) {
         results.gameWinner = "Empate";
         resultElement.textContent = "¡EMPATE GENERAL!";
         storeWinner("Empate");
@@ -83,8 +87,13 @@ function determineWinner() {
 function storeWinner(winner) {
     localStorage.setItem("gameWinner", winner);
 
-    // Mostrar el ganador en el historial solo una vez
-    if (results.roundsPlayed === results.roundsToPlay) {
+    // Mostrar el ganador en el historial solo una vez si es un empate general o hay un ganador
+    if (winner === "Empate" && results.roundsPlayed === results.roundsToPlay) {
+        const historialDiv = document.getElementById("historial");
+        const resultado = document.createElement("p");
+        resultado.textContent = winner;
+        historialDiv.appendChild(resultado);
+    } else if (results.roundsPlayed === results.roundsToPlay) {
         const historialDiv = document.getElementById("historial");
         const resultado = document.createElement("p");
         resultado.textContent = winner;
