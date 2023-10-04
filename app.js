@@ -73,16 +73,13 @@ function determineWinner() {
 function storeWinner(winner) {
     localStorage.setItem("gameWinner", winner);
 
-    // Obtener el historial actual
     const historialDiv = document.getElementById("historial");
     const historial = localStorage.getItem("historial");
 
-    // Agregar el nuevo resultado al historial
     const resultado = document.createElement("p");
     resultado.textContent = winner;
     historialDiv.appendChild(resultado);
 
-    // Guardar el historial actualizado en localStorage
     if (!historial) {
         localStorage.setItem("historial", winner);
     } else {

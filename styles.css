@@ -1,4 +1,3 @@
-/* importar fuente */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 
 body {
@@ -103,7 +102,6 @@ body {
     border: 1px solid white;
 }
 
-/* Estilos para el contenedor del historial */
 .historial-container {
     background-color: #f0f0f0;
     padding: 20px;
@@ -118,7 +116,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Estilos para el historial */
 .historial {
     border: 1px solid #ccc;
     padding: 10px;
@@ -128,7 +125,6 @@ body {
     background-color: #fff;
 }
 
-/* Estilos para los resultados individuales en el historial */
 .historial p {
     margin: 5px 0;
 }
