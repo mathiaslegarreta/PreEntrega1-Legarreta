@@ -9,12 +9,13 @@ const choices = {
     3: "Tijera"
 };
 
-const results = []; 
-let roundsPlayed = 0; 
-const roundsToPlay = 5; 
+const results = [];
+let roundsPlayed = 0;
+const roundsToPlay = 5;
 
 function playRound(userChoice) {
     if (roundsPlayed >= roundsToPlay) {
+        determineWinner();
         return;
     }
 
@@ -48,19 +49,7 @@ function playRound(userChoice) {
     results.push(roundResult);
 
     roundsPlayed++;
-
-    if (roundsPlayed >= roundsToPlay) {
-        determineWinner();
-    }
 }
-
-const optionImages = document.querySelectorAll('.option-image');
-optionImages.forEach(optionImage => {
-    optionImage.addEventListener('click', function() {
-        const userChoice = optionImage.getAttribute('data-choice');
-        playRound(userChoice);
-    });
-});
 
 function choice(election) {
     return choices[election] || "TU ELECCIÓN NO ES CORRECTA!!";
@@ -78,7 +67,7 @@ function determineWinner() {
     } else if (cpuWins > userWins) {
         resultElement.textContent = "LA PC HA GANADO EL JUEGO";
         storeWinner("Máquina");
-    } else {
+    } else if (userWins === roundsToPlay) {
         resultElement.textContent = "¡EMPATE GENERAL!";
         storeWinner("Empate");
     }
@@ -95,11 +84,9 @@ function restartGame() {
     userChoiceImage.src = 'images/piedra.png';
     cpuChoiceImage.src = 'images/piedra.png';
 
-    
     const resultElement = document.getElementById('result');
     resultElement.textContent = 'A Jugar!';
 
-   
     results.length = 0;
 
     localStorage.removeItem("gameWinner");
@@ -115,3 +102,12 @@ if (storedWinner) {
     const resultElement = document.getElementById('result');
     resultElement.textContent = `${storedWinner} HA GANADO EL JUEGO`;
 }
+
+
+const optionImages = document.querySelectorAll('.option-image');
+optionImages.forEach(optionImage => {
+    optionImage.addEventListener('click', function() {
+        const userChoice = optionImage.getAttribute('data-choice');
+        playRound(userChoice);
+    });
+});
