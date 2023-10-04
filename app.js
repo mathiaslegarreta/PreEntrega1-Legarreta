@@ -8,12 +8,15 @@ const choices = {
     2: "Papel",
     3: "Tijera"
 };
-const results = [];
-let roundsPlayed = 0;
-const roundsToPlay = 5;
+const results = {
+    historial: [], // Array para almacenar el historial de resultados
+    roundsPlayed: 0,
+    roundsToPlay: 5,
+    gameWinner: null // Ganador del juego
+};
 
 function playRound(userChoice) {
-    if (roundsPlayed >= roundsToPlay) {
+    if (results.roundsPlayed >= results.roundsToPlay) {
         determineWinner();
         return;
     }
@@ -44,8 +47,8 @@ function playRound(userChoice) {
     }
 
     resultElement.textContent = roundResult;
-    results.push(roundResult);
-    roundsPlayed++;
+    results.historial.push(roundResult); // Agrega el resultado al historial
+    results.roundsPlayed++;
 }
 
 function choice(election) {
@@ -53,18 +56,25 @@ function choice(election) {
 }
 
 function determineWinner() {
+    if (results.gameWinner) {
+        return; // Si ya se determinó un ganador, no hacer nada
+    }
+
     const resultElement = document.getElementById('result');
 
-    const userWins = results.filter(result => result === "GANA EL USUARIO").length;
-    const cpuWins = results.filter(result => result === "GANA LA MÁQUINA").length;
+    const userWins = results.historial.filter(result => result === "GANA EL USUARIO").length;
+    const cpuWins = results.historial.filter(result => result === "GANA LA MÁQUINA").length;
 
     if (userWins > cpuWins) {
+        results.gameWinner = "Usuario";
         resultElement.textContent = "EL USUARIO HA GANADO EL JUEGO";
         storeWinner("Usuario");
     } else if (cpuWins > userWins) {
+        results.gameWinner = "Máquina";
         resultElement.textContent = "LA PC HA GANADO EL JUEGO";
         storeWinner("Máquina");
-    } else if (userWins === roundsToPlay) {
+    } else {
+        results.gameWinner = "Empate";
         resultElement.textContent = "¡EMPATE GENERAL!";
         storeWinner("Empate");
     }
@@ -73,17 +83,12 @@ function determineWinner() {
 function storeWinner(winner) {
     localStorage.setItem("gameWinner", winner);
 
-    const historialDiv = document.getElementById("historial");
-    const historial = localStorage.getItem("historial");
-
-    const resultado = document.createElement("p");
-    resultado.textContent = winner;
-    historialDiv.appendChild(resultado);
-
-    if (!historial) {
-        localStorage.setItem("historial", winner);
-    } else {
-        localStorage.setItem("historial", `${historial},${winner}`);
+    // Mostrar el ganador en el historial solo una vez
+    if (results.roundsPlayed === results.roundsToPlay) {
+        const historialDiv = document.getElementById("historial");
+        const resultado = document.createElement("p");
+        resultado.textContent = winner;
+        historialDiv.appendChild(resultado);
     }
 }
 
@@ -97,11 +102,12 @@ function restartGame() {
     const resultElement = document.getElementById('result');
     resultElement.textContent = 'A Jugar!';
 
-    results.length = 0;
+    results.historial.length = 0; // Limpia el historial
 
     localStorage.removeItem("gameWinner");
+    results.gameWinner = null; // Reinicia el ganador
 
-    roundsPlayed = 0;
+    results.roundsPlayed = 0; // Reinicia el contador de rondas
 }
 
 const restartButton = document.getElementById('restart');
