@@ -8,7 +8,6 @@ const choices = {
     2: "Papel",
     3: "Tijera"
 };
-
 const results = [];
 let roundsPlayed = 0;
 const roundsToPlay = 5;
@@ -45,9 +44,7 @@ function playRound(userChoice) {
     }
 
     resultElement.textContent = roundResult;
-
     results.push(roundResult);
-
     roundsPlayed++;
 }
 
@@ -106,7 +103,7 @@ if (storedWinner) {
 
 const optionImages = document.querySelectorAll('.option-image');
 optionImages.forEach(optionImage => {
-    optionImage.addEventListener('click', function() {
+    optionImage.addEventListener('click', function () {
         const userChoice = optionImage.getAttribute('data-choice');
         playRound(userChoice);
     });
