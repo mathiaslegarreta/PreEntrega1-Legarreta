@@ -138,3 +138,14 @@ optionImages.forEach(optionImage => {
         playGameRound(userChoice);
     });
 });
+const clearHistoryButton = document.getElementById('clear-history');
+
+clearHistoryButton.addEventListener('click', function () {
+    results.historial.length = 0;
+    
+    
+    const historialDiv = document.getElementById("historial");
+    historialDiv.innerHTML = '';
+    
+    localStorage.removeItem("gameWinner");
+});
