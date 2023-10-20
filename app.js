@@ -17,6 +17,21 @@ let user;
 let pc;
 let roundResult;
 
+function loadGameHistory() {
+    const storedHistory = localStorage.getItem('gameHistory');
+    if (storedHistory) {
+        results.historial = JSON.parse(storedHistory);
+        const historialDiv = document.getElementById("historial");
+        results.historial.forEach(winner => {
+            const resultado = document.createElement("p");
+            resultado.textContent = winner;
+            historialDiv.appendChild(resultado);
+        });
+    }
+}
+
+loadGameHistory();
+
 
 function playGameRound(userChoice) {
     if (results.roundsPlayed >= results.roundsToPlay) {
@@ -83,8 +98,12 @@ function announceWinner(winner, message) {
     storeWinner(winner);
 }
 
+
 function storeWinner(winner) {
-    localStorage.setItem("gameWinner", winner);
+    results.historial.push(winner);
+
+    localStorage.setItem("gameHistory", JSON.stringify(results.historial));
+
     if (results.roundsPlayed === results.roundsToPlay) {
         const historialDiv = document.getElementById("historial");
         const resultado = document.createElement("p");
@@ -92,6 +111,8 @@ function storeWinner(winner) {
         historialDiv.appendChild(resultado);
     }
 }
+
+
 
 function updateResult(result) {
     const resultElement = document.getElementById('result');
@@ -142,10 +163,11 @@ const clearHistoryButton = document.getElementById('clear-history');
 
 clearHistoryButton.addEventListener('click', function () {
     results.historial.length = 0;
-    
-    
+
+
     const historialDiv = document.getElementById("historial");
     historialDiv.innerHTML = '';
-    
+
+    localStorage.removeItem("gameHistory");
     localStorage.removeItem("gameWinner");
 });
