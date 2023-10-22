@@ -22,10 +22,13 @@ function loadGameHistory() {
     if (storedHistory) {
         results.historial = JSON.parse(storedHistory);
         const historialDiv = document.getElementById("historial");
+        historialDiv.innerHTML = '';
         results.historial.forEach(winner => {
-            const resultado = document.createElement("p");
-            resultado.textContent = winner;
-            historialDiv.appendChild(resultado);
+            if (winner === "Empate" || winner === "Máquina" || winner === "Usuario") {
+                const resultado = document.createElement("p");
+                resultado.textContent = winner;
+                historialDiv.appendChild(resultado);
+            }
         });
     }
 }
@@ -100,15 +103,14 @@ function announceWinner(winner, message) {
 
 
 function storeWinner(winner) {
-    results.historial.push(winner);
-
-    localStorage.setItem("gameHistory", JSON.stringify(results.historial));
+    results.historial.push(winner); 
 
     if (results.roundsPlayed === results.roundsToPlay) {
         const historialDiv = document.getElementById("historial");
         const resultado = document.createElement("p");
         resultado.textContent = winner;
         historialDiv.appendChild(resultado);
+        localStorage.setItem("gameHistory", JSON.stringify(results.historial));
     }
 }
 
