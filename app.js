@@ -56,9 +56,9 @@ function playGameRound(userChoice) {
     if (user === pc) {
         roundResult = "EMPATE";
     } else if (
-        (user === 1 && pc === 3) ||  // Piedra vence a Tijera
-        (user === 2 && pc === 1) ||  // Papel vence a Piedra
-        (user === 3 && pc === 2)     // Tijera vence a Papel
+        (user === 1 && pc === 3) ||  
+        (user === 2 && pc === 1) ||  
+        (user === 3 && pc === 2)  
     ) {
         roundResult = "GANA EL USUARIO";
     } else {
