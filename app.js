@@ -16,11 +16,14 @@ const results = {
 let user;
 let pc;
 let roundResult;
+let originalHistory = results.historial.slice();
+
 
 function loadGameHistory() {
     const storedHistory = localStorage.getItem('gameHistory');
     if (storedHistory) {
         results.historial = JSON.parse(storedHistory);
+        originalHistory = results.historial.slice();
         const historialDiv = document.getElementById("historial");
         historialDiv.innerHTML = '';
         results.historial.forEach(winner => {
@@ -53,9 +56,9 @@ function playGameRound(userChoice) {
     if (user === pc) {
         roundResult = "EMPATE";
     } else if (
-        (user === 1 && pc === 3) ||
-        (user === 2 && pc === 1) ||
-        (user === 3 && pc === 2)
+        (user === 1 && pc === 3) ||  // Piedra vence a Tijera
+        (user === 2 && pc === 1) ||  // Papel vence a Piedra
+        (user === 3 && pc === 2)     // Tijera vence a Papel
     ) {
         roundResult = "GANA EL USUARIO";
     } else {
@@ -66,10 +69,13 @@ function playGameRound(userChoice) {
     results.historial.push(roundResult);
     results.roundsPlayed++;
 
+    localStorage.setItem("gameHistory", JSON.stringify(results.historial));
+
     if (results.roundsPlayed === results.roundsToPlay) {
         determineWinner();
     }
 }
+
 
 function choice(selection) {
     return choices[selection] || "TU ELECCIÓN NO ES CORRECTA!!";
@@ -138,7 +144,8 @@ function restartGame() {
 
     updateResult('A Jugar!');
 
-    results.historial.length = 0;
+    results.historial = originalHistory.slice();
+
     localStorage.removeItem("gameWinner");
     results.gameWinner = null;
 
