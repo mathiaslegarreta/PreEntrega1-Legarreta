@@ -15,6 +15,9 @@ Pasos a seguir:
 7. Mostrar los resultados de las cada ronda y el historial de ganadores.
 8. Boton para reiniciar el Juego
 9. Boton para limpiar historial.
+10. Mantener historial una al recargar la pagina.
+
+   
 
 
 
